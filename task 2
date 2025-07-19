@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Quote App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .quote-box {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 600px;
+      text-align: center;
+    }
+    .quote-text {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    .quote-author {
+      font-style: italic;
+      color: #555;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #007BFF;
+      color: white;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="quote-box">
+    <div class="quote-text" id="quote-text">Loading quote...</div>
+    <div class="quote-author" id="quote-author"></div>
+    <button onclick="showRandomQuote()">New Quote</button>
+  </div>
+
+  <script>
+    const quotes = [
+      { text: "Be yourself; everyone else is already taken.", author: "Oscar Wilde" },
+      { text: "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.", author: "Albert Einstein" },
+      { text: "So many books, so little time.", author: "Frank Zappa" },
+      { text: "A room without books is like a body without a soul.", author: "Marcus Tullius Cicero" },
+      { text: "Be the change that you wish to see in the world.", author: "Mahatma Gandhi" },
+      { text: "In three words I can sum up everything I've learned about life: it goes on.", author: "Robert Frost" }
+    ];
+
+    function showRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const quote = quotes[randomIndex];
+      document.getElementById('quote-text').textContent = `"${quote.text}"`;
+      document.getElementById('quote-author').textContent = `— ${quote.author}`;
+    }
+
+    // Show a quote when the page loads
+    window.onload = showRandomQuote;
+  </script>
+</body>
+</html>
